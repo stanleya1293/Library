@@ -61,24 +61,53 @@ void Library::write_to_file(std::string file) {
   outfile.open(file);
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
-    outfile << it->title << endl
-	    << it->author_name << endl
-	    << it->pages << endl
-	    << it->isbn << endl
-	    << it->cover_price << endl
-	    << it->year << endl;
+    outfile << it->title << std::endl
+	    << it->author_name << std::endl
+	    << it->pages << std::endl
+	    << it->isbn << std::endl
+	    << it->cover_price << std::endl
+	    << it->year << std::endl;
   }
   outfile.close();
 }
 
 void Library::insert_sorted(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year) {
-  
+  if (lib_list.empty()) {
+    push_back(title, author_name, pages, isbn, cover_price, year);
+  }
+  else if (lib_list.size() == 1) {
+    if (lib_list.front().author_name < author_name) {
+      push_back(title, author_name, pages, isbn, cover_price, year);
+    }
+    else {
+      push_front(title, author_name, pages, isbn, cover_price, year);
+    }    
+  }
+  else {
+    std::list<Book>::iterator it;
+    Book book;
+    book.title = title;
+    book.author_name = author_name;
+    book.pages = pages;
+    book.isbn = isbn;
+    book.cover_price = cover_price;
+    book.year = year;
+    for (it = lib_list.begin(); it != lib_list.end(); it++) {
+      if (it == lib_list.end()) {
+	push_back(title, author_name, pages, isbn, cover_price, year);
+      }
+      else if (it->author_name >= author_name) {
+	lib_list.insert(it, book);
+	break;
+      }
+    }
+  }
 }
 
 void Library::find_author(std::string author) {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
-    if (it->author == author) {
+    if (it->author_name == author) {
       std::cout << it->title << "\n";
     }
   }
@@ -88,12 +117,12 @@ void Library::find_album(std::string title) {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
     if (it->title == title) {
-      std::cout << "Title: " << it->title << endl
-		<< "Author: " << it->author_name << endl
-		<< "Pages: " << it->pages << endl
-		<< "isbn: " << it->isbn << endl
-		<< "Cover Price: " << it->cover_price <<  endl
-		<< "Year: " << it->year << endl << endl;
+      std::cout << "Title: " << it->title << std::endl
+		<< "Author: " << it->author_name << std::endl
+		<< "Pages: " << it->pages << std::endl
+		<< "isbn: " << it->isbn << std::endl
+		<< "Cover Price: " << it->cover_price <<  std::endl
+		<< "Year: " << it->year << std::endl << std::endl;
     }
   }
 }
@@ -110,12 +139,12 @@ void Library::delete_book(std::string author, std::string book) {
 void Library::print() {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
-    std::cout << "Title: " << it->title << endl
-	      << "Author: " << it->author_name << endl
-	      << "Pages: " << it->pages << endl
-	      << "isbn: " << it->isbn << endl
-	      << "Cover Price: " << it->cover_price << endl
-	      << "Year: " << it->year << endl << endl;
+    std::cout << "Title: " << it->title << std::endl
+	      << "Author: " << it->author_name << std::endl
+	      << "Pages: " << it->pages << std::endl
+	      << "isbn: " << it->isbn << std::endl
+	      << "Cover Price: " << it->cover_price << std::endl
+	      << "Year: " << it->year << std::endl << std::endl;
   }
 }
 

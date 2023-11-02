@@ -1,5 +1,5 @@
 CC = g++
-CFLAGS = -g -Wall -Wextra
+CFLAGS = -c -Wall -Wextra
 TARGET = library
 
 all: $(TARGET)

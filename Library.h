@@ -22,7 +22,7 @@ public:
   void push_middle();
   void read_from_file(std::string file);
   void write_to_file(std::string file);
-  void insert_sorted();
+  void insert_sorted(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year);
   void find_author(std::string author);
   void find_album(std::string title);
   void delete_book(std::string author, std::string book);
