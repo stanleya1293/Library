@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @author Arden Stanley / Trey Wright
+ * @date 2023-11-01
+ * @brief The driver UI for the Library class
+ * 
+ * 
+ */
+
 #include <iostream>
 #include <iomanip>
 #include <fstream>
@@ -53,16 +62,18 @@ int main() {
      // seach for book by author in the given file
     else if (choice == 4) {
       string author;
-      cout << " Enter author to find book ";
-      cin >> author;
+      cout << "Enter author to find book: ";
+      cin.ignore();
+      getline(cin, author);
       library.find_author(author);
       cout << "\n";
     }
      // search for book by title in the file   
     else if (choice == 5) {
       string title;
-      cout << " Enter title to find book ";
-      cin >> title;
+      cout << "Enter title to find book: ";
+      cin.ignore();
+      getline(cin, title);
       library.find_album(title);
       cout << "\n";
     }
@@ -71,17 +82,18 @@ int main() {
       string title, author,isbn;
       int year, pages;
       float price;
-      cout << "Enter a title\n";
-      cin >> title;
-      cout << "Enter a author\n";
-      cin >> author;
-      cout << "Enter a number of pages\n";
+      cout << "Enter a title:\n";
+      cin.ignore();
+      getline(cin, title);
+      cout << "Enter a author:\n";
+      getline(cin, author);
+      cout << "Enter a number of pages:\n";
       cin >> pages;
-      cout << "Enter a isbn\n";
+      cout << "Enter a isbn:\n";
       cin >> isbn;
-      cout << "Enter a price\n";
+      cout << "Enter a price:\n";
       cin >> price;
-      cout << "Enter a year\n";
+      cout << "Enter a year:\n";
       cin >> year;
       library.insert_sorted(title, author, pages, isbn, price, year);
       cout << "\n";
@@ -90,9 +102,10 @@ int main() {
     else if (choice == 7) {
       string author, book;
       cout << "Enter author of book you wish to delete: ";
-      cin >> author;
+      cin.ignore();
+      getline(cin, author);
       cout << "Enter title of book you wish to delete: ";
-      cin >> book;
+      getline(cin, book);
       library.delete_book(author, book);
       cout << "Book deleted.\n";
       cout << "\n";
