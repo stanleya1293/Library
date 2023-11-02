@@ -39,19 +39,18 @@ void Library::read_from_file(std::string file) {
   std::string isbn;
   float cover_price;
   int year;
-  std::string trash;
   while (true) {
+    
     std::getline(infile, title);
     std::getline(infile, author_name);
     infile >> pages;
-    infile >> trash;
+    infile.ignore();
     std::getline(infile, isbn);
-    infile >> pages;
-    infile >> trash;
+    infile >> cover_price;
+    infile.ignore();
     infile >> year;
-    infile >> trash;
     if (infile) {
-      push_front(title, author_name, pages, isbn, cover_price, year);
+      push_front(title, author_name, (int) pages, isbn, (float) cover_price, (int) year);
     }
     else {
       break;
