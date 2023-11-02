@@ -1,3 +1,12 @@
+/**
+ * @file Library.h
+ * @author Arden Stanley / Trey Wright
+ * @date 2023-11-01
+ * @brief The library class, which acts a linked list that stores book entries
+ * 
+ * 
+ */
+
 #ifndef LIBRARY_H
 #define LIBRARY_H
 #include <iostream>
