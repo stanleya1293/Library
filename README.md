@@ -1,1 +1,1 @@
-# Library
+This project is a Library (a collection of books) which integrates a Library class which acts as a linked list using a struct named Book as nodes.  The program integrates all of the above to create a book keeping system with an easy to use UI.  To compile on your system, simply type "make".  After that, run the executable "library" which contains many different self-explanatory options in which a user can edit, remove, find, and do many other interesting modifications to their book list!
