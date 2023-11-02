@@ -1,3 +1,12 @@
+/**
+ * @file Library.cpp
+ * @author Arden Stanley / Trey Wright
+ * @date 2023-11-01
+ * @brief implementations for Library class
+ * 
+ * 
+ */
+
 #include "Library.h"
 #include <iostream>
 #include <list>
@@ -39,8 +48,17 @@ void Library::read_from_file(std::string file) {
   std::string isbn;
   float cover_price;
   int year;
-  while (true) {
-    
+  std::getline(infile, title);
+  std::getline(infile, author_name);
+  infile >> pages;
+  infile.ignore();
+  std::getline(infile, isbn);
+  infile >> cover_price;
+  infile.ignore();
+  infile >> year;
+  infile.ignore();
+  push_back(title, author_name, pages, isbn, cover_price, year);
+  while (infile) {
     std::getline(infile, title);
     std::getline(infile, author_name);
     infile >> pages;
@@ -49,14 +67,11 @@ void Library::read_from_file(std::string file) {
     infile >> cover_price;
     infile.ignore();
     infile >> year;
+    infile.ignore();
     if (infile) {
-      push_front(title, author_name, (int) pages, isbn, (float) cover_price, (int) year);
-    }
-    else {
-      break;
+      push_back(title, author_name, pages, isbn, cover_price, year);
     }
   }
-  infile.close();
 } 
 // writes existing files that have been read and compiles then into one new file that has both combined
 void Library::write_to_file(std::string file) {
