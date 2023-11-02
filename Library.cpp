@@ -7,7 +7,7 @@
 Library::Library() {
   
 }
-
+//pushes to the back of the file
 void Library::push_back(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year) {
   Book new_book;
   new_book.title = title;
@@ -18,7 +18,7 @@ void Library::push_back(std::string title, std::string author_name, int pages, s
   new_book.year = year;
   lib_list.push_back(new_book);
 }
-
+//pushes to the front of the file
 void Library::push_front(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year) {
   Book new_book;
   new_book.title = title;
@@ -29,10 +29,10 @@ void Library::push_front(std::string title, std::string author_name, int pages, 
   new_book.year = year;
   lib_list.push_front(new_book);
 }
-
+//Reads in a new file and takes in all of its data
 void Library::read_from_file(std::string file) {
   std::ifstream infile;
-  infile.open(file);
+  infile.open(file); 
   std::string title;
   std::string author_name;
   int pages;
@@ -59,7 +59,7 @@ void Library::read_from_file(std::string file) {
   }
   infile.close();
 } 
-
+// writes existing files that have been read and compiles then into one new file that has both combined
 void Library::write_to_file(std::string file) {
   std::ofstream outfile;
   outfile.open(file);
@@ -74,7 +74,7 @@ void Library::write_to_file(std::string file) {
   }
   outfile.close();
 }
-
+// adds a new book to the file 
 void Library::insert_sorted(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year) {
   if (lib_list.empty()) {
     push_back(title, author_name, pages, isbn, cover_price, year);
@@ -107,7 +107,7 @@ void Library::insert_sorted(std::string title, std::string author_name, int page
     }
   }
 }
-
+// searches for a author by the name that the user has inputed
 void Library::find_author(std::string author) {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
@@ -116,7 +116,7 @@ void Library::find_author(std::string author) {
     }
   }
 }
-
+// searches for the book by the title that the user has inputed
 void Library::find_album(std::string title) {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
@@ -130,7 +130,7 @@ void Library::find_album(std::string title) {
     }
   }
 }
-
+// deletes the book specified by the user from the file 
 void Library::delete_book(std::string author, std::string book) {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
@@ -139,7 +139,7 @@ void Library::delete_book(std::string author, std::string book) {
     }
   }
 }
-
+// prints out all the books in the file/files that have been read in
 void Library::print() {
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {

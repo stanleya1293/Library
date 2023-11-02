@@ -13,6 +13,7 @@ int main() {
 
   int answer = 0;
 
+  //while loop to make the menu loop over and over until the user quits it
   while (answer != 8) {
     cout << "Welcome to the UTM Library!\n"
 	 << "1 Read a Book from a file\n"
@@ -35,7 +36,7 @@ int main() {
       cout << "Book read from file.\n";
       cout << "\n";
     }
-    
+     // writes the opened files to a new seperate file that has all of the changes done to it   
     else if(choice == 2){
       string filename;
       cout << "Enter the file name to write to: ";
@@ -49,7 +50,7 @@ int main() {
       library.print();
       cout << "\n";
     }
-    
+     // seach for book by author in the given file
     else if (choice == 4) {
       string author;
       cout << " Enter author to find book ";
@@ -57,7 +58,7 @@ int main() {
       library.find_author(author);
       cout << "\n";
     }
-    
+     // search for book by title in the file   
     else if (choice == 5) {
       string title;
       cout << " Enter title to find book ";
@@ -65,7 +66,7 @@ int main() {
       library.find_album(title);
       cout << "\n";
     }
-
+     // adding new book function
     else if (choice == 6) {
       string title, author,isbn;
       int year, pages;
@@ -85,7 +86,7 @@ int main() {
       library.insert_sorted(title, author, pages, isbn, price, year);
       cout << "\n";
     }
-    
+     // function used to delete books from the file
     else if (choice == 7) {
       string author, book;
       cout << "Enter author of book you wish to delete: ";
