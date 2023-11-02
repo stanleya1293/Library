@@ -23,8 +23,8 @@ public:
   void read_from_file(std::string file);
   void write_to_file(std::string file);
   void insert_sorted();
-  std::string find_author();
-  std::string find_album();
+  void find_author(std::string author);
+  void find_album(std::string title);
   void delete_book(std::string author, std::string book);
   void print();
   ~Library();

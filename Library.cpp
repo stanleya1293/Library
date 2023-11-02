@@ -61,34 +61,62 @@ void Library::write_to_file(std::string file) {
   outfile.open(file);
   std::list<Book>::iterator it;
   for (it = lib_list.begin(); it != lib_list.end(); it++) {
-    outfile << it->title << "\n"
-	    << it->author_name << "\n"
-	    << it->pages << "\n"
-	    << it->isbn << "\n"
-	    << it->cover_price << "\n"
-	    << it->year << "\n";
+    outfile << it->title << endl
+	    << it->author_name << endl
+	    << it->pages << endl
+	    << it->isbn << endl
+	    << it->cover_price << endl
+	    << it->year << endl;
   }
   outfile.close();
 }
 
-void Library::insert_sorted() {
+void Library::insert_sorted(std::string title, std::string author_name, int pages, std::string isbn, float cover_price, int year) {
   
 }
 
-std::string Library::find_author() {
-  
+void Library::find_author(std::string author) {
+  std::list<Book>::iterator it;
+  for (it = lib_list.begin(); it != lib_list.end(); it++) {
+    if (it->author == author) {
+      std::cout << it->title << "\n";
+    }
+  }
 }
 
-std::string Library::find_album() {
-
+void Library::find_album(std::string title) {
+  std::list<Book>::iterator it;
+  for (it = lib_list.begin(); it != lib_list.end(); it++) {
+    if (it->title == title) {
+      std::cout << "Title: " << it->title << endl
+		<< "Author: " << it->author_name << endl
+		<< "Pages: " << it->pages << endl
+		<< "isbn: " << it->isbn << endl
+		<< "Cover Price: " << it->cover_price <<  endl
+		<< "Year: " << it->year << endl << endl;
+    }
+  }
 }
 
 void Library::delete_book(std::string author, std::string book) {
-
+  std::list<Book>::iterator it;
+  for (it = lib_list.begin(); it != lib_list.end(); it++) {
+    if (it->author_name == author && it->title == book) {
+      it = lib_list.erase(it);
+    }
+  }
 }
 
 void Library::print() {
-
+  std::list<Book>::iterator it;
+  for (it = lib_list.begin(); it != lib_list.end(); it++) {
+    std::cout << "Title: " << it->title << endl
+	      << "Author: " << it->author_name << endl
+	      << "Pages: " << it->pages << endl
+	      << "isbn: " << it->isbn << endl
+	      << "Cover Price: " << it->cover_price << endl
+	      << "Year: " << it->year << endl << endl;
+  }
 }
 
 Library::~Library() {
