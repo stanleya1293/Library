@@ -69,7 +69,7 @@ void Library::read_from_file(std::string file) {
     infile >> year;
     infile.ignore();
     if (infile) {
-      push_back(title, author_name, pages, isbn, cover_price, year);
+      insert_sorted(title, author_name, pages, isbn, cover_price, year);
     }
   }
 } 
